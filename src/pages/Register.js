@@ -1,9 +1,23 @@
+import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
+import { register } from "../api/auth";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({});
 
+  const { mutate } = useMutation({
+    mutationKey: ["register"],
+    mutationFn: () => register(userInfo),
+    onSuccess: () => {
+      alert("success");
+    },
+    onError: () => {
+      alert("error");
+    },
+  });
+
   const handleChange = (e) => {
+    console.log(userInfo);
     if (e.target.name === "image") {
       setUserInfo({ ...userInfo, [e.target.name]: e.target.files[0] });
     } else {
@@ -12,8 +26,9 @@ const Register = () => {
   };
 
   const handleFormSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // Add register logic here
+    mutate();
   };
 
   return (
@@ -42,12 +57,12 @@ const Register = () => {
               htmlFor="email"
               className="block text-white text-sm font-medium mb-2"
             >
-              Email
+              username
             </label>
             <input
-              type="email"
-              id="email"
-              name="email"
+              type="username"
+              id="username"
+              name="username"
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
