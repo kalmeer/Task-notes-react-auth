@@ -1,25 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useParams } from "react-router-dom";
-import { getNote } from "../api/notes";
+import { getRecipe } from "../api/recipes";
 
-const Note = () => {
-  const { noteId } = useParams();
+const Recipe = () => {
+  const { recipeId } = useParams();
 
   const {
-    data: note,
+    data: recipe,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["note", noteId],
-    queryFn: () => getNote(noteId),
+    queryKey: ["recipe", recipeId],
+    queryFn: () => getRecipe(recipeId),
   });
-  if (!note) return <div>Not found!</div>;
-  const { title, user, topic, body } = note;
+  if (!recipe) return <div>Not found!</div>;
+  const { title, user, topic, body } = recipe;
 
   return (
-    <div className="bg-gray-900 min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full px-6 py-8 bg-gray-800 rounded-md shadow-md">
+    <div className="bg-orange-900 min-h-screen flex items-center justify-center">
+      <div className="max-w-md w-full px-6 py-8 bg-orange-800 rounded-md shadow-md">
         <div className="flex items-center mb-4">
           <img
             src={user.image}
@@ -46,4 +46,4 @@ const Note = () => {
   );
 };
 
-export default Note;
+export default Recipe;

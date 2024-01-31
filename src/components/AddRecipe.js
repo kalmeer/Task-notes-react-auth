@@ -1,21 +1,21 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
-import { createNote } from "../api/notes";
+import { createRecipe } from "../api/recipes";
 
-const AddNote = ({ show, onClose, onSave }) => {
+const AddRecipe = ({ show, onClose, onSave }) => {
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState([]);
   const [body, setBody] = useState("");
   const queryClient = useQueryClient();
-  const { mutate: addNote } = useMutation({
+  const { mutate: addRecipe } = useMutation({
     mutationFn: () =>
-      createNote({
+      createRecipe({
         title,
         topic: topics,
         body,
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries(["notes"]);
+      queryClient.invalidateQueries(["recipes"]);
       onClose();
     },
   });
@@ -45,7 +45,7 @@ const AddNote = ({ show, onClose, onSave }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    addNote();
+    addRecipe();
     setTitle("");
     setTopics([]);
     setBody("");
@@ -56,9 +56,9 @@ const AddNote = ({ show, onClose, onSave }) => {
   }
 
   return (
-    <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-10">
-      <div className="bg-gray-800 rounded-md shadow-md w-full max-w-md p-6 overflow-scroll max-h-[70%]">
-        <h2 className="text-3xl text-white font-semibold mb-6">Add Note</h2>
+    <div className="fixed inset-0 bg-orange-900 bg-opacity-75 flex items-center justify-center z-10">
+      <div className="bg-orange-800 rounded-md shadow-md w-full max-w-md p-6 overflow-scroll max-h-[70%]">
+        <h2 className="text-3xl text-white font-semibold mb-6">Add Recipe</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label
@@ -146,4 +146,4 @@ const AddNote = ({ show, onClose, onSave }) => {
   );
 };
 
-export default AddNote;
+export default AddRecipe;

@@ -4,8 +4,8 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Notes from "./pages/Notes";
-import Note from "./pages/Note";
+import Recipes from "./pages/Recipes";
+import Recipe from "./pages/Recipe";
 import Users from "./pages/Users";
 import { clear } from "@testing-library/user-event/dist/clear";
 import { useState } from "react";
@@ -20,8 +20,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" Component={Home} />
-          <Route path="/notes" Component={Notes} />
-          <Route path="/notes/:noteId" Component={Note} />
+          <Route path="/recipes" Component={Recipes} />
+          <Route path="/recipes/:recipeId" Component={Recipe} />
           <Route path="/login" Component={Login} />
           <Route path="/register" Component={Register} />
           <Route path="/users" Component={Users} />

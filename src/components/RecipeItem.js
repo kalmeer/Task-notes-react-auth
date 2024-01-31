@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NoteItem = ({ user, title, topic, _id }) => {
+const RecipeItem = ({ user, title, topic, _id }) => {
   return (
     <div className="bg-gray-800 rounded-md shadow-md p-4 mb-4 text-white min-w-[300px]">
       <div className="flex items-center justify-between mb-2">
@@ -18,8 +18,8 @@ const NoteItem = ({ user, title, topic, _id }) => {
           </span>
         ))}
       </div>
-      <Link to={`/notes/${_id}`}>
-        <button className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
+      <Link to={`/recipes/${_id}`}>
+        <button className="px-3 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors">
           View Details
         </button>
       </Link>
@@ -27,4 +27,4 @@ const NoteItem = ({ user, title, topic, _id }) => {
   );
 };
 
-export default NoteItem;
+export default RecipeItem;

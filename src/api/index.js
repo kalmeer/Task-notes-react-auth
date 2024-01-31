@@ -1,7 +1,7 @@
-import axios from "axios";
+// import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "https://task-react-auth.herokuapp.com/api",
-});
+// const instance = axios.create({
+//   baseURL: "https://",
+// });
 
-export default instance;
+// export default instance;
